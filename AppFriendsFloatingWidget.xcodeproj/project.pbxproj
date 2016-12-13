@@ -77,6 +77,7 @@
 		AF4AC6091DFFD41F00D1952F = {
 			isa = PBXGroup;
 			children = (
+				AF4AC6431DFFD44B00D1952F /* source */,
 				AF4AC6141DFFD41F00D1952F /* AppFriendsFloatingWidget */,
 				AF4AC6291DFFD42000D1952F /* AppFriendsFloatingWidgetTests */,
 				AF4AC6341DFFD42000D1952F /* AppFriendsFloatingWidgetUITests */,
@@ -123,6 +124,13 @@
 				AF4AC6371DFFD42000D1952F /* Info.plist */,
 			);
 			path = AppFriendsFloatingWidgetUITests;
+			sourceTree = "<group>";
+		};
+		AF4AC6431DFFD44B00D1952F /* source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
