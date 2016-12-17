@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B003F21CE895B095FF07ABD /* Pods_AppFriendsFloatingWidgetSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4F6C0A4B5A30188F26A11F /* Pods_AppFriendsFloatingWidgetSample.framework */; };
 		AF4AC6161DFFD41F00D1952F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4AC6151DFFD41F00D1952F /* AppDelegate.swift */; };
 		AF4AC6181DFFD41F00D1952F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4AC6171DFFD41F00D1952F /* ViewController.swift */; };
 		AF4AC61B1DFFD41F00D1952F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4AC6191DFFD41F00D1952F /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		AF4AC6201DFFD41F00D1952F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4AC61E1DFFD41F00D1952F /* LaunchScreen.storyboard */; };
 		AF4AC62B1DFFD42000D1952F /* AppFriendsFloatingWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4AC62A1DFFD42000D1952F /* AppFriendsFloatingWidgetTests.swift */; };
 		AF4AC6361DFFD42000D1952F /* AppFriendsFloatingWidgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4AC6351DFFD42000D1952F /* AppFriendsFloatingWidgetUITests.swift */; };
+		AF4AC6471DFFD5BD00D1952F /* AppFriendsFloatingWidget.podspec in Resources */ = {isa = PBXBuildFile; fileRef = AF4AC6461DFFD5BD00D1952F /* AppFriendsFloatingWidget.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,19 +36,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF4AC6121DFFD41F00D1952F /* AppFriendsFloatingWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFriendsFloatingWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E4F6C0A4B5A30188F26A11F /* Pods_AppFriendsFloatingWidgetSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFriendsFloatingWidgetSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C720C6156A4AA98156BA614 /* Pods-AppFriendsFloatingWidgetSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsFloatingWidgetSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsFloatingWidgetSample/Pods-AppFriendsFloatingWidgetSample.debug.xcconfig"; sourceTree = "<group>"; };
+		AF4AC6121DFFD41F00D1952F /* AppFriendsFloatingWidgetSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFriendsFloatingWidgetSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4AC6151DFFD41F00D1952F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF4AC6171DFFD41F00D1952F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF4AC61A1DFFD41F00D1952F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF4AC61C1DFFD41F00D1952F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF4AC61F1DFFD41F00D1952F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4AC6211DFFD41F00D1952F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF4AC6261DFFD41F00D1952F /* AppFriendsFloatingWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFriendsFloatingWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF4AC6261DFFD41F00D1952F /* AppFriendsFloatingWidgetSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFriendsFloatingWidgetSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4AC62A1DFFD42000D1952F /* AppFriendsFloatingWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFriendsFloatingWidgetTests.swift; sourceTree = "<group>"; };
 		AF4AC62C1DFFD42000D1952F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF4AC6311DFFD42000D1952F /* AppFriendsFloatingWidgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFriendsFloatingWidgetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF4AC6311DFFD42000D1952F /* AppFriendsFloatingWidgetSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFriendsFloatingWidgetSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4AC6351DFFD42000D1952F /* AppFriendsFloatingWidgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFriendsFloatingWidgetUITests.swift; sourceTree = "<group>"; };
 		AF4AC6371DFFD42000D1952F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF4AC6461DFFD5BD00D1952F /* AppFriendsFloatingWidget.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppFriendsFloatingWidget.podspec; sourceTree = "<group>"; };
+		AF4AC6491DFFD65D00D1952F /* HCFloatingWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCFloatingWidget.swift; sourceTree = "<group>"; };
+		AF6C4FFE422FADE07043A23A /* Pods-AppFriendsFloatingWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsFloatingWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsFloatingWidget/Pods-AppFriendsFloatingWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		AF6EB7F01E04D41E007E9A15 /* HCFloatingWidgetExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCFloatingWidgetExtensions.swift; sourceTree = "<group>"; };
+		AF6EB7F11E04D8C5007E9A15 /* HCPreviewBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPreviewBubble.swift; sourceTree = "<group>"; };
+		C1943E2E8713BDDE13F9B845 /* Pods-AppFriendsFloatingWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsFloatingWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsFloatingWidget/Pods-AppFriendsFloatingWidget.release.xcconfig"; sourceTree = "<group>"; };
+		F495443898CDF2D6E1CBAB3A /* Pods-AppFriendsFloatingWidgetSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsFloatingWidgetSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsFloatingWidgetSample/Pods-AppFriendsFloatingWidgetSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B003F21CE895B095FF07ABD /* Pods_AppFriendsFloatingWidgetSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,23 +86,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34061BB554BABDFBC8A2A413 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C4FFE422FADE07043A23A /* Pods-AppFriendsFloatingWidget.debug.xcconfig */,
+				C1943E2E8713BDDE13F9B845 /* Pods-AppFriendsFloatingWidget.release.xcconfig */,
+				9C720C6156A4AA98156BA614 /* Pods-AppFriendsFloatingWidgetSample.debug.xcconfig */,
+				F495443898CDF2D6E1CBAB3A /* Pods-AppFriendsFloatingWidgetSample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AF4AC6091DFFD41F00D1952F = {
 			isa = PBXGroup;
 			children = (
-				AF4AC6431DFFD44B00D1952F /* source */,
+				AF4AC6461DFFD5BD00D1952F /* AppFriendsFloatingWidget.podspec */,
+				AF4AC6481DFFD65D00D1952F /* Source */,
 				AF4AC6141DFFD41F00D1952F /* AppFriendsFloatingWidget */,
 				AF4AC6291DFFD42000D1952F /* AppFriendsFloatingWidgetTests */,
 				AF4AC6341DFFD42000D1952F /* AppFriendsFloatingWidgetUITests */,
 				AF4AC6131DFFD41F00D1952F /* Products */,
+				34061BB554BABDFBC8A2A413 /* Pods */,
+				EBFDE5CD464F86CB516DD503 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		AF4AC6131DFFD41F00D1952F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AF4AC6121DFFD41F00D1952F /* AppFriendsFloatingWidget.app */,
-				AF4AC6261DFFD41F00D1952F /* AppFriendsFloatingWidgetTests.xctest */,
-				AF4AC6311DFFD42000D1952F /* AppFriendsFloatingWidgetUITests.xctest */,
+				AF4AC6121DFFD41F00D1952F /* AppFriendsFloatingWidgetSample.app */,
+				AF4AC6261DFFD41F00D1952F /* AppFriendsFloatingWidgetSampleTests.xctest */,
+				AF4AC6311DFFD42000D1952F /* AppFriendsFloatingWidgetSampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,36 +152,50 @@
 			path = AppFriendsFloatingWidgetUITests;
 			sourceTree = "<group>";
 		};
-		AF4AC6431DFFD44B00D1952F /* source */ = {
+		AF4AC6481DFFD65D00D1952F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AF4AC6491DFFD65D00D1952F /* HCFloatingWidget.swift */,
+				AF6EB7F01E04D41E007E9A15 /* HCFloatingWidgetExtensions.swift */,
+				AF6EB7F11E04D8C5007E9A15 /* HCPreviewBubble.swift */,
 			);
-			path = source;
+			path = Source;
+			sourceTree = "<group>";
+		};
+		EBFDE5CD464F86CB516DD503 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E4F6C0A4B5A30188F26A11F /* Pods_AppFriendsFloatingWidgetSample.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidget */ = {
+		AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidgetSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AF4AC63A1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidget" */;
+			buildConfigurationList = AF4AC63A1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetSample" */;
 			buildPhases = (
+				2290FBAD53A87694BD194D46 /* [CP] Check Pods Manifest.lock */,
 				AF4AC60E1DFFD41F00D1952F /* Sources */,
 				AF4AC60F1DFFD41F00D1952F /* Frameworks */,
 				AF4AC6101DFFD41F00D1952F /* Resources */,
+				276E3E38AE65462498032560 /* [CP] Embed Pods Frameworks */,
+				6F88D0327A096C90EF49B653 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = AppFriendsFloatingWidget;
+			name = AppFriendsFloatingWidgetSample;
 			productName = AppFriendsFloatingWidget;
-			productReference = AF4AC6121DFFD41F00D1952F /* AppFriendsFloatingWidget.app */;
+			productReference = AF4AC6121DFFD41F00D1952F /* AppFriendsFloatingWidgetSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AF4AC6251DFFD41F00D1952F /* AppFriendsFloatingWidgetTests */ = {
+		AF4AC6251DFFD41F00D1952F /* AppFriendsFloatingWidgetSampleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AF4AC63D1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetTests" */;
+			buildConfigurationList = AF4AC63D1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetSampleTests" */;
 			buildPhases = (
 				AF4AC6221DFFD41F00D1952F /* Sources */,
 				AF4AC6231DFFD41F00D1952F /* Frameworks */,
@@ -166,14 +206,14 @@
 			dependencies = (
 				AF4AC6281DFFD41F00D1952F /* PBXTargetDependency */,
 			);
-			name = AppFriendsFloatingWidgetTests;
+			name = AppFriendsFloatingWidgetSampleTests;
 			productName = AppFriendsFloatingWidgetTests;
-			productReference = AF4AC6261DFFD41F00D1952F /* AppFriendsFloatingWidgetTests.xctest */;
+			productReference = AF4AC6261DFFD41F00D1952F /* AppFriendsFloatingWidgetSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AF4AC6301DFFD42000D1952F /* AppFriendsFloatingWidgetUITests */ = {
+		AF4AC6301DFFD42000D1952F /* AppFriendsFloatingWidgetSampleUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AF4AC6401DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetUITests" */;
+			buildConfigurationList = AF4AC6401DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetSampleUITests" */;
 			buildPhases = (
 				AF4AC62D1DFFD42000D1952F /* Sources */,
 				AF4AC62E1DFFD42000D1952F /* Frameworks */,
@@ -184,9 +224,9 @@
 			dependencies = (
 				AF4AC6331DFFD42000D1952F /* PBXTargetDependency */,
 			);
-			name = AppFriendsFloatingWidgetUITests;
+			name = AppFriendsFloatingWidgetSampleUITests;
 			productName = AppFriendsFloatingWidgetUITests;
-			productReference = AF4AC6311DFFD42000D1952F /* AppFriendsFloatingWidgetUITests.xctest */;
+			productReference = AF4AC6311DFFD42000D1952F /* AppFriendsFloatingWidgetSampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -218,7 +258,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AF4AC60D1DFFD41F00D1952F /* Build configuration list for PBXProject "AppFriendsFloatingWidget" */;
+			buildConfigurationList = AF4AC60D1DFFD41F00D1952F /* Build configuration list for PBXProject "AppFriendsFloatingWidgetSample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -231,9 +271,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidget */,
-				AF4AC6251DFFD41F00D1952F /* AppFriendsFloatingWidgetTests */,
-				AF4AC6301DFFD42000D1952F /* AppFriendsFloatingWidgetUITests */,
+				AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidgetSample */,
+				AF4AC6251DFFD41F00D1952F /* AppFriendsFloatingWidgetSampleTests */,
+				AF4AC6301DFFD42000D1952F /* AppFriendsFloatingWidgetSampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -245,6 +285,7 @@
 			files = (
 				AF4AC6201DFFD41F00D1952F /* LaunchScreen.storyboard in Resources */,
 				AF4AC61D1DFFD41F00D1952F /* Assets.xcassets in Resources */,
+				AF4AC6471DFFD5BD00D1952F /* AppFriendsFloatingWidget.podspec in Resources */,
 				AF4AC61B1DFFD41F00D1952F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +305,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2290FBAD53A87694BD194D46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		276E3E38AE65462498032560 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppFriendsFloatingWidgetSample/Pods-AppFriendsFloatingWidgetSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F88D0327A096C90EF49B653 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppFriendsFloatingWidgetSample/Pods-AppFriendsFloatingWidgetSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF4AC60E1DFFD41F00D1952F /* Sources */ = {
@@ -296,12 +385,12 @@
 /* Begin PBXTargetDependency section */
 		AF4AC6281DFFD41F00D1952F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidget */;
+			target = AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidgetSample */;
 			targetProxy = AF4AC6271DFFD41F00D1952F /* PBXContainerItemProxy */;
 		};
 		AF4AC6331DFFD42000D1952F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidget */;
+			target = AF4AC6111DFFD41F00D1952F /* AppFriendsFloatingWidgetSample */;
 			targetProxy = AF4AC6321DFFD42000D1952F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -344,6 +433,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -393,6 +483,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -419,7 +510,9 @@
 		};
 		AF4AC63B1DFFD42000D1952F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C720C6156A4AA98156BA614 /* Pods-AppFriendsFloatingWidgetSample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BL6PZ96S5P;
 				INFOPLIST_FILE = AppFriendsFloatingWidget/Info.plist;
@@ -432,7 +525,9 @@
 		};
 		AF4AC63C1DFFD42000D1952F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F495443898CDF2D6E1CBAB3A /* Pods-AppFriendsFloatingWidgetSample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BL6PZ96S5P;
 				INFOPLIST_FILE = AppFriendsFloatingWidget/Info.plist;
@@ -454,7 +549,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.AppFriendsFloatingWidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFriendsFloatingWidget.app/AppFriendsFloatingWidget";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFriendsFloatingWidgetSample.app/AppFriendsFloatingWidgetSample";
 			};
 			name = Debug;
 		};
@@ -469,7 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.AppFriendsFloatingWidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFriendsFloatingWidget.app/AppFriendsFloatingWidget";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFriendsFloatingWidgetSample.app/AppFriendsFloatingWidgetSample";
 			};
 			name = Release;
 		};
@@ -504,7 +599,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AF4AC60D1DFFD41F00D1952F /* Build configuration list for PBXProject "AppFriendsFloatingWidget" */ = {
+		AF4AC60D1DFFD41F00D1952F /* Build configuration list for PBXProject "AppFriendsFloatingWidgetSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF4AC6381DFFD42000D1952F /* Debug */,
@@ -513,29 +608,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AF4AC63A1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidget" */ = {
+		AF4AC63A1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF4AC63B1DFFD42000D1952F /* Debug */,
 				AF4AC63C1DFFD42000D1952F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		AF4AC63D1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetTests" */ = {
+		AF4AC63D1DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetSampleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF4AC63E1DFFD42000D1952F /* Debug */,
 				AF4AC63F1DFFD42000D1952F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		AF4AC6401DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetUITests" */ = {
+		AF4AC6401DFFD42000D1952F /* Build configuration list for PBXNativeTarget "AppFriendsFloatingWidgetSampleUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF4AC6411DFFD42000D1952F /* Debug */,
 				AF4AC6421DFFD42000D1952F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
