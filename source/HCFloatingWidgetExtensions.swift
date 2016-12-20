@@ -8,6 +8,7 @@
 
 import UIKit
 import AppFriendsUI
+import AlamofireImage
 
 public extension HCFloatingWidget {
     
@@ -15,11 +16,14 @@ public extension HCFloatingWidget {
     
     open func showPreviewBubble(message: HCMessage? = nil) {
         
+        self.messagePreviewBubble.messagePreviewText.text = message?.text
+        if let url = message?.senderAvatar, let imageURL = URL(string: url) {
+            self.messagePreviewBubble.avatarView.af_setImage(withURL: imageURL)
+        }
+        
         if !_messagePreviewShowing {
             
-            _messagePreviewShowing = true
-            
-            UIView.animate(withDuration: 0.1, animations: { 
+            UIView.animate(withDuration: 0.1, animations: {
                 
                 self.messagePreviewBubble.alpha = 1
                 self.widgetButton.alpha = 0
@@ -40,6 +44,7 @@ public extension HCFloatingWidget {
                     
                 }, completion: { (finish) in
                     
+                    self._messagePreviewShowing = true
                     let delayTime = DispatchTime.now() + Double(Int64(5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
                     DispatchQueue.main.asyncAfter(deadline: delayTime)
                     {[weak self] in
@@ -54,8 +59,6 @@ public extension HCFloatingWidget {
         
         if _messagePreviewShowing {
             
-            _messagePreviewShowing = false
-        
             UIView.animate(withDuration: 0.2, animations: {
                 
                 var currentFrame = self._currentFrame
@@ -76,9 +79,42 @@ public extension HCFloatingWidget {
                     self.messagePreviewBubble.alpha = 0
                     self.widgetButton.alpha = 1
                     
+                }, completion: { (finished) in
+                    
+                    self.messagePreviewBubble.messagePreviewText.text = ""
+                    self.messagePreviewBubble.avatarView.image = nil
+                    self._messagePreviewShowing = false
                 })
             })
         }
+    }
+    
+    func imageFromView(view: UIView) -> UIImage? {
+
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if let width = image?.size.width, width > 400, let img = image {
+            
+            return resizeWithWidth(img, 400)
+        }
+        
+        return image
+    }
+    
+    func resizeWithWidth(_ image: UIImage, _ width: CGFloat) -> UIImage {
+        
+        let height = (width * image.size.height) / image.size.width
+        let aspectSize = CGSize (width: width, height: height)
+        
+        UIGraphicsBeginImageContext(aspectSize)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: aspectSize))
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return img!
     }
     
 }

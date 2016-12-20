@@ -71,11 +71,14 @@ class ViewController: UIViewController, HCFloatingWidgetDelegate, HCSidePanelVie
     
     func widgetButtonTapped(widget: HCFloatingWidget) {
         
-        let channelID = "456df29e-ff5f-494d-ba9a-f1e4127c9244"
+//        let channelID = "456df29e-ff5f-494d-ba9a-f1e4127c9244"
+//        let channelChatVC = HCChannelChatContainerController(dialog: channelID, hasStatusBar: true) // the dialogID has to be a channel you created
         
-        let channelChatVC = HCChannelChatContainerController(dialog: channelID, hasStatusBar: true) // the dialogID has to be a channel you created
-        
-        let sidePanelVC = AppFriendsUI.sharedInstance.presentVCInSidePanel(fromVC: self, showVC: channelChatVC, direction: .left)
+        let chatListVC = HCDialogsListViewController()
+        chatListVC.automaticallyAdjustsScrollViewInsets = false
+        chatListVC.edgesForExtendedLayout = []
+        let nav = UINavigationController(rootViewController: chatListVC)
+        let sidePanelVC = AppFriendsUI.sharedInstance.presentVCInSidePanel(fromVC: self, showVC: nav, direction: .left)
         sidePanelVC.delegate = self
     }
     

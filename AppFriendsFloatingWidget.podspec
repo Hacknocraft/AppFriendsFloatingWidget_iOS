@@ -25,5 +25,6 @@ s.source_files 	= "Source/**/*.{swift,xib}"
 
 s.dependency 'AppFriendsUI'
 s.dependency 'AppFriendsCore'
+s.dependency 'RSKImageCropper'
 
 end

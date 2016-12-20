@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8BE9AA225EE0A5CBAB09988933EF22D431EA9ED5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5A3C8BA89D43098B762E3DBBE1D4ABDCEA8EF644" : 9223372036854775807,
+    "8BE9AA225EE0A5CBAB09988933EF22D431EA9ED5" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AE3BCD2C-03B5-44F3-B6E0-977368994B74",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5A3C8BA89D43098B762E3DBBE1D4ABDCEA8EF644" : "AppFriendsUISource\/",
+    "8BE9AA225EE0A5CBAB09988933EF22D431EA9ED5" : "AppFriendsFloatingWidget\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AppFriendsFloatingWidgetSample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AppFriendsFloatingWidgetSample.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Hacknocraft\/AppFriendsUISource.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A3C8BA89D43098B762E3DBBE1D4ABDCEA8EF644"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Hacknocraft\/AppFriendsFloatingWidget_iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8BE9AA225EE0A5CBAB09988933EF22D431EA9ED5"
+    }
+  ]
+}

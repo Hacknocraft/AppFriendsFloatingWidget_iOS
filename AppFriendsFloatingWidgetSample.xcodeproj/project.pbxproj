@@ -38,6 +38,7 @@
 /* Begin PBXFileReference section */
 		6E4F6C0A4B5A30188F26A11F /* Pods_AppFriendsFloatingWidgetSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFriendsFloatingWidgetSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C720C6156A4AA98156BA614 /* Pods-AppFriendsFloatingWidgetSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsFloatingWidgetSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsFloatingWidgetSample/Pods-AppFriendsFloatingWidgetSample.debug.xcconfig"; sourceTree = "<group>"; };
+		AF0AEAA61E08B570007A4C79 /* HCScreenshotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCScreenshotController.swift; sourceTree = "<group>"; };
 		AF4AC6121DFFD41F00D1952F /* AppFriendsFloatingWidgetSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFriendsFloatingWidgetSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4AC6151DFFD41F00D1952F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF4AC6171DFFD41F00D1952F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 				AF4AC6491DFFD65D00D1952F /* HCFloatingWidget.swift */,
 				AF6EB7F01E04D41E007E9A15 /* HCFloatingWidgetExtensions.swift */,
 				AF6EB7F11E04D8C5007E9A15 /* HCPreviewBubble.swift */,
+				AF0AEAA61E08B570007A4C79 /* HCScreenshotController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

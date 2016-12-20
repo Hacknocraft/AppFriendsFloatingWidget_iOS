@@ -25,6 +25,7 @@ import UIKit
         self.addSubview(messagePreviewText)
         
         avatarView.layer.cornerRadius = 10
+        avatarView.clipsToBounds = true
         messagePreviewText.numberOfLines = 2
         messagePreviewText.font = UIFont.systemFont(ofSize: 13)
         avatarView.translatesAutoresizingMaskIntoConstraints = false
