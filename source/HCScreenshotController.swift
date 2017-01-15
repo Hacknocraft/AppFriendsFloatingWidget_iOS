@@ -10,7 +10,7 @@ import UIKit
 import RSKImageCropper
 import AppFriendsUI
 
-class HCScreenshotController: RSKImageCropViewController, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource {
+@objc open class HCScreenshotController: RSKImageCropViewController, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, HCDialogsPickerViewControllerDelegate, UINavigationControllerDelegate {
 
     let closeButton = UIButton(type: .custom)
     let zoomButton = UIButton(type: .custom)
@@ -18,13 +18,15 @@ class HCScreenshotController: RSKImageCropViewController, RSKImageCropViewContro
     let sendButton = UIButton(type: .custom)
     let actionPanel = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 60))
     
+    var croppedImage: UIImage?
+    
     enum ScreenShotIntent {
         case share, send
     }
     
     var intent: ScreenShotIntent = .send
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         
         super.viewDidLoad()
         self.delegate = self
@@ -58,7 +60,7 @@ class HCScreenshotController: RSKImageCropViewController, RSKImageCropViewContro
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
     }
     
-    override func updateViewConstraints() {
+    override open func updateViewConstraints() {
         
         super.updateViewConstraints()
         
@@ -116,22 +118,24 @@ class HCScreenshotController: RSKImageCropViewController, RSKImageCropViewContro
     
     // MARK: - RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource
     
-    func imageCropViewControllerDidCancelCrop(_ controller: RSKImageCropViewController) {
+    public func imageCropViewControllerDidCancelCrop(_ controller: RSKImageCropViewController) {
         
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func imageCropViewControllerCustomMaskPath(_ controller: RSKImageCropViewController) -> UIBezierPath {
+    public func imageCropViewControllerCustomMaskPath(_ controller: RSKImageCropViewController) -> UIBezierPath {
         
         return UIBezierPath(rect: cropRect)
     }
     
-    func imageCropViewControllerCustomMaskRect(_ controller: RSKImageCropViewController) -> CGRect {
+    public func imageCropViewControllerCustomMaskRect(_ controller: RSKImageCropViewController) -> CGRect {
         
         return cropRect
     }
     
-    func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect) {
+    public func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect) {
+        
+        self.croppedImage = croppedImage
         
         if self.intent == .share {
             
@@ -152,8 +156,42 @@ class HCScreenshotController: RSKImageCropViewController, RSKImageCropViewContro
             
             let dialogsPicker = HCDialogsPickerViewController()
             dialogsPicker.title = "Pick a Conversation"
+            dialogsPicker.delegate = self
+            dialogsPicker.includeChannels = true
             self.navigationController?.pushViewController(dialogsPicker, animated: true)
         }
     }
 
+    // MARK: - HCDialogsPickerViewControllerDelegate
+    
+    public func didChooseDialog(_ dialogID: String) {
+        
+        if let image = self.croppedImage {
+            
+            let chatView = HCDialogChatViewController(dialog: dialogID)
+            self.navigationController?.pushViewController(chatView, animated: true)
+            self.navigationController?.delegate = self
+            
+            let dismissImage = UIImage.GMDIconWithName(.gmdClear, textColor: HCColorPalette.navigationBarIconColor, size: CGSize(width: 30, height: 30))
+            let doneButton = UIBarButtonItem(image: dismissImage, style: .plain, target: self, action: #selector(dismissChatView))
+            chatView.navigationItem.leftBarButtonItem = doneButton
+        }
+    }
+    
+    func dismissChatView() {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - UINavigationControllerDelegate
+    
+    public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        
+        if viewController is HCDialogChatViewController, let image = self.croppedImage {
+            
+            let chatVC = viewController as! HCDialogChatViewController
+            chatVC.sendImage(image)
+            self.croppedImage = nil
+        }
+    }
 }

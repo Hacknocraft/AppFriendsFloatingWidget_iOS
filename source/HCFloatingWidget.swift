@@ -14,7 +14,7 @@ import CoreStore
 @objc public protocol HCFloatingWidgetDelegate {
     
     @objc optional func widgetButtonTapped(widget: HCFloatingWidget)
-    @objc optional func widgetMessagePreviewTapped(dialogID: String, messageID: String, widget: HCFloatingWidget)
+    @objc optional func widgetMessagePreviewTapped(dialogID: String, dialogType: String, messageID: String, widget: HCFloatingWidget)
 }
 
 @objc public class HCFloatingWidget: UIViewController, ListObjectObserver {
@@ -24,6 +24,7 @@ import CoreStore
     open let messagePreviewBubble = HCPreviewBubble(frame: .zero)
     open let badge = UIView(frame: .zero)
     open var monitor: ListMonitor<HCMessage>?
+    open var currentMessageID: String?
     
     open weak var delegate: HCFloatingWidgetDelegate?
     
@@ -61,6 +62,19 @@ import CoreStore
     var _messagePreviewShowing = false
     
     // MARK: - Initialization
+    
+    @objc public convenience init(widgetImage buttonImage: UIImage? = nil,
+                                  screenshotButtonImage ssButtonImage: UIImage? = nil)
+    {
+        self.init(widgetImage: buttonImage,
+                  screenshotButtonImage: ssButtonImage,
+                  allowPanning: true,
+                  showScreenshotButton: true,
+                  showMessagePreview: true,
+                  showUnreadBadge: true)
+        
+        
+    }
     
     public init(widgetImage buttonImage: UIImage? = nil,
                 screenshotButtonImage ssButtonImage: UIImage? = nil,
@@ -228,7 +242,7 @@ import CoreStore
         screenshotButton.autoresizingMask = [.flexibleLeftMargin]
     }
     
-    func screenshotButtonTapped(_ sender: UIButton) {
+    open func screenshotButtonTapped(_ sender: UIButton) {
         
         // present the screenshot tool from the parent view controller
         
@@ -282,8 +296,32 @@ import CoreStore
         messagePreviewBubble.layer.cornerRadius = 10.0
         messagePreviewBubble.clipsToBounds = true
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(widgetButtonTapped))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(previewBubbleTapped))
         messagePreviewBubble.addGestureRecognizer(tap)
+    }
+    
+    func previewBubbleTapped() {
+        
+        CoreStoreManager.store()?.beginAsynchronous({ (transaction) in
+            
+            if let d = self.delegate, let messageID = self.currentMessageID{
+                let currentMessage = HCMessage.findOrCreateMessage(serverID: messageID, transaction: transaction)
+                
+                if let dialogID = currentMessage.dialogID {
+                    
+                    let dialog = HCChatDialog.findDialog(dialogID, transaction: transaction)
+                    let dialogType = dialog?.type
+                    
+                    if let type = dialogType {
+                        
+                        DispatchQueue.main.async(execute: {
+                            d.widgetMessagePreviewTapped?(dialogID: dialogID, dialogType:type, messageID: messageID, widget: self)
+                        })
+                    }
+                }
+            }
+            
+        })
     }
     
     // MARK: - Panning

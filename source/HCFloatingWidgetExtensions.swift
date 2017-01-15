@@ -8,6 +8,7 @@
 
 import UIKit
 import AppFriendsUI
+import AppFriendsCore
 import AlamofireImage
 
 public extension HCFloatingWidget {
@@ -15,6 +16,21 @@ public extension HCFloatingWidget {
     // MARK: - Preview Bubble
     
     open func showPreviewBubble(message: HCMessage? = nil) {
+        
+        if let currentUserID = HCSDKCore.sharedInstance.currentUserID(), currentUserID == message?.senderID
+        {
+            
+            // no need to show preview if it's from the current user
+            return
+        }
+        
+        if let read = message?.read, read == true {
+            
+            // no need to show preview if it's already read
+            return
+        }
+        
+        currentMessageID = message?.messageID
         
         self.messagePreviewBubble.messagePreviewText.text = message?.text
         if let url = message?.senderAvatar, let imageURL = URL(string: url) {
@@ -96,9 +112,9 @@ public extension HCFloatingWidget {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        if let width = image?.size.width, width > 400, let img = image {
+        if let width = image?.size.width, width > 600, let img = image {
             
-            return resizeWithWidth(img, 400)
+            return resizeWithWidth(img, 600)
         }
         
         return image
