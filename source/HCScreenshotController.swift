@@ -16,7 +16,7 @@ import AppFriendsUI
     let zoomButton = UIButton(type: .custom)
     let shareButton = UIButton(type: .custom)
     let sendButton = UIButton(type: .custom)
-    let actionPanel = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 60))
+    let actionPanel = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
     
     var croppedImage: UIImage?
     
@@ -26,9 +26,17 @@ import AppFriendsUI
     
     var intent: ScreenShotIntent = .send
     
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override open func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = HCColorPalette.chatBackgroundColor
+        
         self.delegate = self
         self.dataSource = self
         
