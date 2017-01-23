@@ -7,10 +7,8 @@ target 'AppFriendsFloatingWidgetSample' do
 
   # Pods for AppFriendsFloatingWidget
   #latest AppFriends version
-  pod 'AppFriendsUI', :path => '../AppFriendsUISource/'
-#  pod 'AppFriendsUI', :git => 'https://github.com/Hacknocraft/AppFriendsUI.git', :tag => '1.1.2'
-  pod 'AppFriendsCore', :git => 'https://github.com/Hacknocraft/AppFriendsCore.git', :tag => '1.0.0'
-  pod 'CoreStore', :git => 'https://github.com/JohnEstropia/CoreStore.git', :branch => 'swift3_develop'
+  pod 'AppFriendsUI', :git => 'https://github.com/Hacknocraft/AppFriendsUI.git', :tag => '1.2.0'
+  pod 'AppFriendsCore', :git => 'https://github.com/Hacknocraft/AppFriendsCore.git', :tag => '1.1.0'
   pod 'AppFriendsFloatingWidget', :path => './'
 
   pod 'EZSwiftExtensions'
