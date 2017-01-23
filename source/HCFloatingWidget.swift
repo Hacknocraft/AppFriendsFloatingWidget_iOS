@@ -15,6 +15,7 @@ import CoreStore
     
     @objc optional func widgetButtonTapped(widget: HCFloatingWidget)
     @objc optional func widgetMessagePreviewTapped(dialogID: String, dialogType: String, messageID: String, widget: HCFloatingWidget)
+    @objc optional func didChooseShareImageToDialog(dialogID: String, dialogType: String)
 }
 
 @objc public class HCFloatingWidget: UIViewController, ListObjectObserver {
@@ -251,6 +252,7 @@ import CoreStore
             if let screenshot = self.imageFromView(view: keyWindow) {
                 
                 let screenshotView = HCScreenshotController(image: screenshot, cropMode: .square)
+                screenshotView.widget = self
                 let nav = UINavigationController(rootViewController: screenshotView)
                 self.present(nav, animated: true, completion: nil)
             }
@@ -312,11 +314,30 @@ import CoreStore
                     let dialog = HCChatDialog.findDialog(dialogID, transaction: transaction)
                     let dialogType = dialog?.type
                     
-                    if let type = dialogType {
-                        
-                        DispatchQueue.main.async(execute: {
-                            d.widgetMessagePreviewTapped?(dialogID: dialogID, dialogType:type, messageID: messageID, widget: self)
+                    if dialog == nil && currentMessage.messageType == HCSDKConstants.kMessageTypeChannel
+                    {
+                        // channel not found locally, so we should refresh channels
+                        ChannelsManager.sharedInstance.fetchChannels({ (error) in
+                            
+                            if error == nil {
+                                
+                                DispatchQueue.main.async(execute: {
+                                    d.widgetMessagePreviewTapped?(dialogID: dialogID, dialogType:HCSDKConstants.kMessageTypeChannel, messageID: messageID, widget: self)
+                                })
+                            }
                         })
+                    }
+                    else if (dialog == nil) {
+                        DialogsManager.sharedInstance.fetchDialogs()
+                    }
+                    else {
+                        
+                        if let type = dialogType {
+                            
+                            DispatchQueue.main.async(execute: {
+                                d.widgetMessagePreviewTapped?(dialogID: dialogID, dialogType:type, messageID: messageID, widget: self)
+                            })
+                        }
                     }
                 }
             }
@@ -354,7 +375,10 @@ import CoreStore
     
     open func listMonitor(_ monitor: ListMonitor<HCMessage>, didInsertObject object: HCMessage, toIndexPath indexPath: IndexPath) {
         
-        showPreviewBubble(message: object)
+        if let id = object.senderID, !AppFriendsUserManager.sharedInstance.isBlocked(userID: id) {
+            
+            showPreviewBubble(message: object)
+        }
     }
     
     open func listMonitor(_ monitor: ListMonitor<HCMessage>, didDeleteObject object: HCMessage, fromIndexPath indexPath: IndexPath) {

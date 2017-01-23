@@ -19,6 +19,7 @@ import AppFriendsUI
     let actionPanel = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
     
     var croppedImage: UIImage?
+    var widget: HCFloatingWidget?
     
     enum ScreenShotIntent {
         case share, send
@@ -172,19 +173,13 @@ import AppFriendsUI
 
     // MARK: - HCDialogsPickerViewControllerDelegate
     
-    public func didChooseDialog(_ dialogID: String) {
+    public func didChooseDialog(_ dialogID: String, dialogType type: String) {
         
-        if let image = self.croppedImage {
-            
-            let chatView = HCDialogChatViewController(dialog: dialogID)
-            self.navigationController?.pushViewController(chatView, animated: true)
-            self.navigationController?.delegate = self
-            
-            let dismissImage = UIImage.GMDIconWithName(.gmdClear, textColor: HCColorPalette.navigationBarIconColor, size: CGSize(width: 30, height: 30))
-            let doneButton = UIBarButtonItem(image: dismissImage, style: .plain, target: self, action: #selector(dismissChatView))
-            chatView.navigationItem.leftBarButtonItem = doneButton
+        if let widgetDelegate = self.widget?.delegate {
+            widgetDelegate.didChooseShareImageToDialog?(dialogID: dialogID, dialogType: type)
         }
     }
+    
     
     func dismissChatView() {
         
