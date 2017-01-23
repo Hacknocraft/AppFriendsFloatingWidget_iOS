@@ -51,6 +51,8 @@ import CoreStore
     var showMessagePreview = true
     var showBadge = true
     var viewHeight = HCFloatingWidget.initialHeightFull
+    var lastPreviewShownTime = Date()
+    var previewShowingInterval: TimeInterval = 10  // seconds between each preview showing
     
     static let initialWidth: CGFloat = 50
     static let initialHeightFull: CGFloat = 80
@@ -375,9 +377,19 @@ import CoreStore
     
     open func listMonitor(_ monitor: ListMonitor<HCMessage>, didInsertObject object: HCMessage, toIndexPath indexPath: IndexPath) {
         
-        if let id = object.senderID, !AppFriendsUserManager.sharedInstance.isBlocked(userID: id) {
-            
-            showPreviewBubble(message: object)
+        
+        if let id = object.senderID, !AppFriendsUserManager.sharedInstance.isBlocked(userID: id), let sentTime = object.sentTime, sentTime.timeIntervalSince(lastPreviewShownTime) > previewShowingInterval, let dialogID = object.dialogID
+        {
+            DialogsManager.sharedInstance.queryDialogMuted(dialogID: dialogID, completion: { (muted, error) in
+                
+                if !muted && error == nil{
+                    
+                    DispatchQueue.main.async(execute: {
+                        self.showPreviewBubble(message: object)
+                        self.lastPreviewShownTime = Date()
+                    })
+                }
+            })
         }
     }
     
