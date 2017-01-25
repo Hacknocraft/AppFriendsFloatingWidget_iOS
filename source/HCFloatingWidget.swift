@@ -15,7 +15,7 @@ import CoreStore
     
     @objc optional func widgetButtonTapped(widget: HCFloatingWidget)
     @objc optional func widgetMessagePreviewTapped(dialogID: String, dialogType: String, messageID: String, widget: HCFloatingWidget)
-    @objc optional func didChooseShareImageToDialog(dialogID: String, dialogType: String)
+    @objc optional func didChooseShareImageToDialog(dialogID: String, dialogType: String, image: UIImage?)
 }
 
 @objc public class HCFloatingWidget: UIViewController, ListObjectObserver {

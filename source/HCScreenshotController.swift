@@ -176,7 +176,7 @@ import AppFriendsUI
     public func didChooseDialog(_ dialogID: String, dialogType type: String) {
         
         if let widgetDelegate = self.widget?.delegate {
-            widgetDelegate.didChooseShareImageToDialog?(dialogID: dialogID, dialogType: type)
+            widgetDelegate.didChooseShareImageToDialog?(dialogID: dialogID, dialogType: type, image: self.croppedImage)
         }
     }
     
