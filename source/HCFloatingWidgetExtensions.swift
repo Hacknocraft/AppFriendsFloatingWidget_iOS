@@ -30,9 +30,7 @@ public extension HCFloatingWidget {
             return
         }
         
-        currentMessageID = message?.messageID
-        
-        self.messagePreviewBubble.messagePreviewText.text = message?.text
+        self.messagePreviewBubble.messagePreviewText.text = self.currentMessage?.text
         if let url = message?.senderAvatar, let imageURL = URL(string: url) {
             self.messagePreviewBubble.avatarView.af_setImage(withURL: imageURL)
         }

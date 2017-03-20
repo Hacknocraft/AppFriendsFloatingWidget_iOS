@@ -14,8 +14,8 @@ import CoreStore
 @objc public protocol HCFloatingWidgetDelegate {
     
     @objc optional func widgetButtonTapped(widget: HCFloatingWidget)
-    @objc optional func widgetMessagePreviewTapped(dialogID: String, dialogType: String, messageID: String, widget: HCFloatingWidget)
-    @objc optional func didChooseShareImageToDialog(dialogID: String, dialogType: String, image: UIImage?)
+    @objc optional func widgetMessagePreviewTapped(dialog: AFDialog, messageID: String, widget: HCFloatingWidget)
+    @objc optional func didChooseShareImageToDialog(dialog: AFDialog, image: UIImage?)
 }
 
 @objc public class HCFloatingWidget: UIViewController, ListObjectObserver {
@@ -25,7 +25,7 @@ import CoreStore
     open let messagePreviewBubble = HCPreviewBubble(frame: .zero)
     open let badge = UIView(frame: .zero)
     open var monitor: ListMonitor<HCMessage>?
-    open var currentMessageID: String?
+    open var currentMessage: AFMessage?
     
     open weak var delegate: HCFloatingWidgetDelegate?
     
@@ -199,7 +199,7 @@ import CoreStore
             if let count = notification?.object as? NSNumber, count.intValue > 0 {
                 self.badge.isHidden = false
             }
-            else if DialogsManager.sharedInstance.totalUnreadMessages > 0 {
+            else if AFDialog.totalUnreadMessageCount() > 0 {
                 self.badge.isHidden = false
             }
             else {
@@ -305,48 +305,21 @@ import CoreStore
     }
     
     func previewBubbleTapped() {
-        
-        CoreStoreManager.store()?.beginAsynchronous({ (transaction) in
-            
-            if let d = self.delegate, let messageID = self.currentMessageID{
-                let currentMessage = HCMessage.findOrCreateMessage(serverID: messageID, transaction: transaction)
-                
-                if let dialogID = currentMessage.dialogID {
-                    
-                    let dialog = HCChatDialog.findDialog(dialogID, transaction: transaction)
-                    let dialogType = dialog?.type
-                    
-                    if dialog == nil && currentMessage.messageType == HCSDKConstants.kMessageTypeChannel
-                    {
-                        // channel not found locally, so we should refresh channels
-                        ChannelsManager.sharedInstance.fetchChannels({ (error) in
-                            
-                            if error == nil {
-                                
-                                DispatchQueue.main.async(execute: {
-                                    d.widgetMessagePreviewTapped?(dialogID: dialogID, dialogType:HCSDKConstants.kMessageTypeChannel, messageID: messageID, widget: self)
-                                })
-                            }
-                        })
+
+        if let d = self.delegate, let message = self.currentMessage, let messageID = message.id {
+            if let dialogID = message.dialogID {
+
+                AFDialog.getDialog(dialogID: dialogID, completion: { (dialog, error) in
+                    if let dialogObject = dialog, error == nil {
+                        d.widgetMessagePreviewTapped?(dialog: dialogObject,
+                                                      messageID: messageID,
+                                                      widget: self)
                     }
-                    else if (dialog == nil) {
-                        DialogsManager.sharedInstance.fetchDialogs()
-                    }
-                    else {
-                        
-                        if let type = dialogType {
-                            
-                            DispatchQueue.main.async(execute: {
-                                d.widgetMessagePreviewTapped?(dialogID: dialogID, dialogType:type, messageID: messageID, widget: self)
-                            })
-                        }
-                    }
-                }
+                })
             }
-            
-        })
+        }
     }
-    
+
     // MARK: - Panning
     
     func initializePanning() {
@@ -378,18 +351,25 @@ import CoreStore
     open func listMonitor(_ monitor: ListMonitor<HCMessage>, didInsertObject object: HCMessage, toIndexPath indexPath: IndexPath) {
         
         
-        if let id = object.senderID, !AppFriendsUserManager.sharedInstance.isBlocked(userID: id), let sentTime = object.sentTime, sentTime.timeIntervalSince(lastPreviewShownTime) > previewShowingInterval, let dialogID = object.dialogID
-        {
-            DialogsManager.sharedInstance.queryDialogMuted(dialogID: dialogID, completion: { (muted, error) in
-                
-                if !muted && error == nil{
-                    
-                    DispatchQueue.main.async(execute: {
-                        self.showPreviewBubble(message: object)
-                        self.lastPreviewShownTime = Date()
+        if let id = object.senderID, let sentTime = object.sentTime, sentTime.timeIntervalSince(lastPreviewShownTime) > previewShowingInterval, let dialogID = object.dialogID {
+
+            AFUser.checkIfUserIsBlocked(id, completion: { (blocked, error) in
+
+                if let userBlocked = blocked, userBlocked == false {
+
+                    AFDialog.checkIfDialogIsMuted(dialogID, completion: { (muted, error) in
+
+                        if let isMuted = muted, isMuted == false {
+
+                            DispatchQueue.main.async(execute: {
+                                self.showPreviewBubble(message: object)
+                                self.lastPreviewShownTime = Date()
+                            })
+                        }
                     })
                 }
             })
+
         }
     }
     

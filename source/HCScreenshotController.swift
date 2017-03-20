@@ -173,10 +173,10 @@ import AppFriendsUI
 
     // MARK: - HCDialogsPickerViewControllerDelegate
     
-    public func didChooseDialog(_ dialogID: String, dialogType type: String) {
+    public func didChooseDialog(_ dialog: AFDialog) {
         
         if let widgetDelegate = self.widget?.delegate {
-            widgetDelegate.didChooseShareImageToDialog?(dialogID: dialogID, dialogType: type, image: self.croppedImage)
+            widgetDelegate.didChooseShareImageToDialog?(dialog: dialog, image: self.croppedImage)
         }
     }
     
