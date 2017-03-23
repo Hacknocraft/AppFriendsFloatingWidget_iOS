@@ -9,7 +9,6 @@
 import UIKit
 import AppFriendsUI
 import AppFriendsCore
-import CoreStore
 
 @objc public protocol HCFloatingWidgetDelegate {
     
@@ -18,13 +17,12 @@ import CoreStore
     @objc optional func didChooseShareImageToDialog(dialog: AFDialog, image: UIImage?)
 }
 
-@objc public class HCFloatingWidget: UIViewController, ListObjectObserver {
+@objc public class HCFloatingWidget: UIViewController, AFEventSubscriber {
     
     open let widgetButton: UIButton = UIButton(type: .custom)
     open let screenshotButton: UIButton = UIButton(type: .custom)
     open let messagePreviewBubble = HCPreviewBubble(frame: .zero)
     open let badge = UIView(frame: .zero)
-    open var monitor: ListMonitor<HCMessage>?
     open var currentMessage: AFMessage?
     
     open weak var delegate: HCFloatingWidgetDelegate?
@@ -140,6 +138,8 @@ import CoreStore
         if self.showBadge {
             self.initializeBadge()
         }
+
+        AFEvent.subscribe(subscriber: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -152,21 +152,6 @@ import CoreStore
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        if self.monitor == nil, let monitor = CoreStoreManager.store()?.monitorList(
-            //cacheName: cacheName,
-            From(HCMessage.self),
-            Where("messageType != %@", HCSDKConstants.kMessageTypeSystem),
-            OrderBy(.descending("receiveTime")),
-            Tweak {(fetchRequest) -> Void in
-                fetchRequest.fetchBatchSize = 1
-                fetchRequest.fetchLimit = 1
-        })
-        {
-            monitor.addObserver(self)
-            self.monitor = monitor
-        }
         
         self.updateTabBarBadge(nil)
         
@@ -341,55 +326,32 @@ import CoreStore
     }
     
     // MARK: - Monitoring Messages
-    
-    open func listMonitorWillChange(_ monitor: ListMonitor<HCMessage>) {
-    }
-    
-    open func listMonitorDidChange(_ monitor: ListMonitor<HCMessage>) {
-    }
-    
-    open func listMonitor(_ monitor: ListMonitor<HCMessage>, didInsertObject object: HCMessage, toIndexPath indexPath: IndexPath) {
-        
-        
-        if let id = object.senderID, let sentTime = object.sentTime, sentTime.timeIntervalSince(lastPreviewShownTime) > previewShowingInterval, let dialogID = object.dialogID {
 
-            AFUser.checkIfUserIsBlocked(id, completion: { (blocked, error) in
+    public func emitEvent(_ event: AFEvent) {
+        if event.name == .eventMessageReceived, let message = event.data as? AFMessage {
+            currentMessage = message
+            if let id = message.senderID,
+                let sentTime = message.sentTime,
+                sentTime.timeIntervalSince(lastPreviewShownTime) > previewShowingInterval,
+                let dialogID = message.dialogID {
 
-                if let userBlocked = blocked, userBlocked == false {
+                    AFUser.checkIfUserIsBlocked(id, completion: { (blocked, error) in
 
-                    AFDialog.checkIfDialogIsMuted(dialogID, completion: { (muted, error) in
+                        if let userBlocked = blocked, userBlocked == false {
 
-                        if let isMuted = muted, isMuted == false {
+                            AFDialog.checkIfDialogIsMuted(dialogID, completion: { (muted, error) in
 
-                            DispatchQueue.main.async(execute: {
-                                self.showPreviewBubble(message: object)
-                                self.lastPreviewShownTime = Date()
+                                if let isMuted = muted, isMuted == false {
+
+                                    DispatchQueue.main.async(execute: {
+                                        self.showPreviewBubble(message: message)
+                                        self.lastPreviewShownTime = Date()
+                                    })
+                                }
                             })
                         }
                     })
-                }
-            })
-
+            }
         }
-    }
-    
-    open func listMonitor(_ monitor: ListMonitor<HCMessage>, didDeleteObject object: HCMessage, fromIndexPath indexPath: IndexPath) {
-    }
-    
-    open func listMonitor(_ monitor: ListMonitor<HCMessage>, didUpdateObject object: HCMessage, atIndexPath indexPath: IndexPath) {
-    }
-    
-    
-    open func listMonitor(_ monitor: ListMonitor<HCMessage>, didMoveObject object: HCMessage, fromIndexPath: IndexPath, toIndexPath: IndexPath) {
-    }
-    
-    // MARK: ListSectionObserver
-    
-    open func listMonitor(_ monitor: ListMonitor<HCMessage>, didInsertSection sectionInfo: NSFetchedResultsSectionInfo, toSectionIndex sectionIndex: Int) {
-        
-    }
-    
-    open func listMonitor(_ monitor: ListMonitor<HCMessage>, didDeleteSection sectionInfo: NSFetchedResultsSectionInfo, fromSectionIndex sectionIndex: Int) {
-        
     }
 }
