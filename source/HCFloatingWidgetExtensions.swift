@@ -15,7 +15,7 @@ public extension HCFloatingWidget {
     
     // MARK: - Preview Bubble
     
-    open func showPreviewBubble(message: AFMessage? = nil) {
+    public func showPreviewBubble(message: AFMessage? = nil) {
         
         if let currentUserID = HCSDKCore.sharedInstance.currentUserID(), currentUserID == message?.senderID
         {
@@ -69,7 +69,7 @@ public extension HCFloatingWidget {
         }
     }
     
-    open func hidePreviewButton() {
+    public func hidePreviewButton() {
         
         if _messagePreviewShowing {
             
