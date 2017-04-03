@@ -53,10 +53,10 @@ import AppFriendsUI
         shareButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         
-        closeButton.setImage(UIImage.GMDIconWithName(.gmdClear, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
-        zoomButton.setImage(UIImage.GMDIconWithName(.gmdFullscreen, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
-        shareButton.setImage(UIImage.GMDIconWithName(.gmdShare, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
-        sendButton.setImage(UIImage.GMDIconWithName(.gmdSend, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
+        closeButton.setImage(UIImage.materialDesignIconWithName(.gmdClear, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
+        zoomButton.setImage(UIImage.materialDesignIconWithName(.gmdFullscreen, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
+        shareButton.setImage(UIImage.materialDesignIconWithName(.gmdShare, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
+        sendButton.setImage(UIImage.materialDesignIconWithName(.gmdSend, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 30, height: 30)), for: .normal)
         
         self.actionPanel.addSubview(closeButton)
         self.actionPanel.addSubview(zoomButton)

@@ -218,7 +218,7 @@ import AppFriendsCore
         if let screenshotImage = screenshotButtonImage {
             screenshotButton.setImage(screenshotImage, for: .normal)
         }else {
-            let screenshotImage = UIImage.GMDIconWithName(.gmdCrop, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 25, height: 25))
+            let screenshotImage = UIImage.materialDesignIconWithName(.gmdCrop, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 25, height: 25))
             screenshotButton.setImage(screenshotImage, for: .normal)
         }
         
@@ -255,7 +255,7 @@ import AppFriendsCore
         if let image = widgetButtonImage {
             widgetButton.setImage(image, for: .normal)
         } else {
-            let widgetImage = UIImage.GMDIconWithName(.gmdQuestionAnswer, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 25, height: 25))
+            let widgetImage = UIImage.materialDesignIconWithName(.gmdQuestionAnswer, textColor: HCFloatingWidget.widgetButtonIconColor, size: CGSize(width: 25, height: 25))
             widgetButton.setImage(widgetImage, for: .normal)
         }
         widgetButton.setTitleColor(HCFloatingWidget.widgetButtonIconColor, for: .normal)

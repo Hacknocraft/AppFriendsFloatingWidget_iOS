@@ -29,16 +29,14 @@ class ViewController: UIViewController, HCFloatingWidgetDelegate, HCSidePanelVie
             
             if success {
                 
-                if !appFriendsCore.isLogin(){
-                    appFriendsCore.loginWithUserInfo([HCSDKConstants.kUserName: userName as AnyObject, HCSDKConstants.kUserID: userID as AnyObject], completion:
-                    { (response, error) in
-                        
+                if !AFSession.isLoggedIn(){
+                    AFSession.login(username: userName, userID: userID, completion: { (_, error) in
                         if error == nil {
-                            
+
                             self.presentWidget()
                         }
                         else {
-                            
+
                             let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                             self.show(alert, sender: nil)
                         }
@@ -82,8 +80,8 @@ class ViewController: UIViewController, HCFloatingWidgetDelegate, HCSidePanelVie
         sidePanelVC.delegate = self
     }
     
-    func widgetMessagePreviewTapped(dialogID: String, messageID: String, widget: HCFloatingWidget) {
-        
+    func widgetMessagePreviewTapped(dialog: AFDialog, messageID: String, widget: HCFloatingWidget) {
+
     }
     
     // MARK: - HCSidePanelViewControllerDelegate
