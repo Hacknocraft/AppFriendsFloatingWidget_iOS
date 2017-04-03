@@ -10,8 +10,8 @@ target 'AppFriendsFloatingWidgetSample' do
 
   # Pods for AppFriendsFloatingWidget
   #latest AppFriends version
-  pod 'AppFriendsUI', '~> 2.0.0'
-  pod 'AppFriendsCore', '~> 2.0.0'
+  pod 'AppFriendsUI', '~> 2.0.1'
+  pod 'AppFriendsCore', '~> 2.0.1'
   pod 'AppFriendsFloatingWidget', :path => './'
 
   pod 'EZSwiftExtensions'

@@ -197,8 +197,7 @@ import AppFriendsCore
     
     open func present(overVC hostingVC: UIViewController, position: CGPoint) {
         
-        let appFriendsCore = HCSDKCore.sharedInstance
-        assert(appFriendsCore.isLogin(), "Please login before presenting the widget.")
+        assert(AFSession.isLoggedIn(), "Please login before presenting the widget.")
         
         hostingVC.addChildViewController(self)
         hostingVC.view.addSubview(self.view)

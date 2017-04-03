@@ -19,7 +19,7 @@ fi
 echo "releasing version: ${NEWVERSIONSTRING}"
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $NEWVERSIONSTRING" "${PROJECT_DIR}/${INFOPLIST_FILE}"
 
-commit to github
+#commit to github
 git commit -a -m "commit release ${NEWVERSIONSTRING}"
 git push
 git tag -a ${NEWVERSIONSTRING} -m "release ${NEWVERSIONSTRING}"
