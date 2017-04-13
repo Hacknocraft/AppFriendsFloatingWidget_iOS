@@ -11,10 +11,14 @@ import AppFriendsUI
 import AppFriendsCore
 import AlamofireImage
 
+// MARK: - Preview Bubble Extension to HCFloatingWidget
 public extension HCFloatingWidget {
     
     // MARK: - Preview Bubble
     
+    /// Show a preview bubble of a message
+    ///
+    /// - Parameter message: The message to show the preview of
     public func showPreviewBubble(message: AFMessage? = nil) {
         
         if let currentUserID = HCSDKCore.sharedInstance.currentUserID(), currentUserID == message?.senderID
@@ -62,14 +66,15 @@ public extension HCFloatingWidget {
                     let delayTime = DispatchTime.now() + Double(Int64(5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
                     DispatchQueue.main.asyncAfter(deadline: delayTime)
                     {[weak self] in
-                        self?.hidePreviewButton()
+                        self?.hidePreviewBubble()
                     }
                 })
             })
         }
     }
     
-    public func hidePreviewButton() {
+    /// Hide the preview bubble
+    public func hidePreviewBubble() {
         
         if _messagePreviewShowing {
             
@@ -103,6 +108,10 @@ public extension HCFloatingWidget {
         }
     }
     
+    /// Create an image from a view
+    ///
+    /// - Parameter view: the view to use
+    /// - Returns: the image created from the view
     func imageFromView(view: UIView) -> UIImage? {
 
         UIGraphicsBeginImageContext(view.frame.size)

@@ -10,6 +10,8 @@ import UIKit
 import AppFriendsUI
 import AppFriendsCore
 
+/// The methods declared by the HCFloatingWidgetDelegate protocol allow 
+/// the adopting delegate to respond to messages from the HCFloatingWidget class
 @objc public protocol HCFloatingWidgetDelegate {
     
     @objc optional func widgetButtonTapped(widget: HCFloatingWidget)
@@ -19,8 +21,11 @@ import AppFriendsCore
 
 @objc public class HCFloatingWidget: UIViewController, AFEventSubscriber {
     
+    /// the widget button
     open let widgetButton: UIButton = UIButton(type: .custom)
+    /// the screenshot button. it will be hidden by default
     open let screenshotButton: UIButton = UIButton(type: .custom)
+    /// the message preview button
     open let messagePreviewBubble = HCPreviewBubble(frame: .zero)
     open let badge = UIView(frame: .zero)
     open var currentMessage: AFMessage?
