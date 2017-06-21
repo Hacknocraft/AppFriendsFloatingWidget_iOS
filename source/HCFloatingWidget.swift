@@ -92,8 +92,6 @@ import AppFriendsCore
         
         super.init(nibName: nil, bundle: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTabBarBadge), name: NSNotification.Name(rawValue: AppFriendsUI.kTotalUnreadMessageCountChangedNotification), object: nil)
-        
         if let shouldShowScreenshotButton = showScreenshot {
             self.showScreenshotButton = shouldShowScreenshotButton
         }
@@ -150,18 +148,14 @@ import AppFriendsCore
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: AppFriendsUI.kTotalUnreadMessageCountChangedNotification), object: nil)
-    }
 
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        self.updateTabBarBadge(nil)
-        
+        self.updateBadge(nil)
+
     }
-    
+
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -182,7 +176,7 @@ import AppFriendsCore
         badge.autoresizingMask = [.flexibleRightMargin]
     }
     
-    func updateTabBarBadge(_ notification: Notification?)
+    func updateBadge(_ notification: Notification?)
     {
         DispatchQueue.main.async(execute: {
             
@@ -356,6 +350,8 @@ import AppFriendsCore
                         }
                     })
             }
+        } else if event.name == .eventTotalUnreadCountChange {
+            self.updateBadge(nil)
         }
     }
 }
