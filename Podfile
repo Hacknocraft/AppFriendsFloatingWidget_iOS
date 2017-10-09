@@ -10,10 +10,17 @@ target 'AppFriendsFloatingWidgetSample' do
 
   # Pods for AppFriendsFloatingWidget
   #latest AppFriends version
-  pod 'AppFriendsUI', '~> 2.1'
-  pod 'AppFriendsCore', '~> 2.0'
+  pod 'AppFriendsUI', :git => 'https://github.com/Hacknocraft/AppFriendsUI.git', :branch => ‘swift4_0’
+  pod 'AppFriendsCore', :git => 'https://github.com/Hacknocraft/AppFriendsCore.git', :branch => ‘swift4_0’
+  pod 'CoreStore', :git => 'https://github.com/JohnEstropia/CoreStore.git', :branch => 'prototype/Swift_4_0’
+  pod 'SlackTextViewController', :git => 'https://github.com/Hacknocraft/SlackTextViewController.git', :branch => 'master'
   pod 'AppFriendsFloatingWidget', :path => './'
+end
 
-  pod 'EZSwiftExtensions'
-
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '4.0'
+        end
+    end
 end

@@ -10,7 +10,6 @@ import UIKit
 import AppFriendsFloatingWidget
 import AppFriendsUI
 import AppFriendsCore
-import EZSwiftExtensions
 
 class ViewController: UIViewController, HCFloatingWidgetDelegate, HCSidePanelViewControllerDelegate {
 

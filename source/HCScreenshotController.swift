@@ -100,11 +100,11 @@ import AppFriendsUI
     
     // MARK: - Actions
     
-    func closeButtonTapped() {
+    @objc func closeButtonTapped() {
         self.cancelCrop()
     }
     
-    func zoomButtonTapped() {
+    @objc func zoomButtonTapped() {
         
         if let imageScrollView = self.value(forKey: "imageScrollView") as? UIScrollView {
             
@@ -113,13 +113,13 @@ import AppFriendsUI
         }
     }
     
-    func shareButtonTapped() {
+    @objc func shareButtonTapped() {
         
         self.intent = .share
         self.cropImage()
     }
     
-    func sendButtonTapped() {
+    @objc func sendButtonTapped() {
         
         self.intent = .send
         self.cropImage()

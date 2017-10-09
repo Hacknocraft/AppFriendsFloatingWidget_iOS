@@ -228,7 +228,7 @@ import AppFriendsCore
         screenshotButton.autoresizingMask = [.flexibleLeftMargin]
     }
     
-    open func screenshotButtonTapped(_ sender: UIButton) {
+    @objc open func screenshotButtonTapped(_ sender: UIButton) {
         
         // present the screenshot tool from the parent view controller
         
@@ -265,7 +265,7 @@ import AppFriendsCore
         
     }
     
-    func widgetButtonTapped() {
+    @objc func widgetButtonTapped() {
         
         if let d = self.delegate {
             d.widgetButtonTapped?(widget: self)
@@ -287,7 +287,7 @@ import AppFriendsCore
         messagePreviewBubble.addGestureRecognizer(tap)
     }
     
-    func previewBubbleTapped() {
+    @objc func previewBubbleTapped() {
 
         if let d = self.delegate, let message = self.currentMessage, let messageID = message.id {
             if let dialogID = message.dialogID {
@@ -311,7 +311,7 @@ import AppFriendsCore
         self.view.addGestureRecognizer(panningGesture)
     }
     
-    func handlePanning(_ pan: UIPanGestureRecognizer) {
+    @objc func handlePanning(_ pan: UIPanGestureRecognizer) {
     
         let translation = pan.translation(in: self.view.superview)
         var center = self.view.center
