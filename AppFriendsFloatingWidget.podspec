@@ -8,7 +8,7 @@ s.summary = "UI components for AppFriends."
 s.requires_arc = true
 
 # 2
-s.version = "1.0.0"
+s.version = "1.1.0"
 
 # 3
 s.license = { :type => "MIT" }
@@ -20,7 +20,7 @@ s.author = { "Hao Wang" => "hao.wang@hacknocraft.com" }
 s.homepage = "http://appfriends.me"
 
 # 6 - framework location
-s.source        = { :git => "https://github.com/Hacknocraft/AppFriendsFloatingWidget_iOS.git", :tag => "1.0.0"}
+s.source        = { :git => "https://github.com/Hacknocraft/AppFriendsFloatingWidget_iOS.git", :tag => "1.1.0"}
 s.source_files 	= "Source/**/*.{swift,xib}"
 
 s.dependency 'AppFriendsUI'
