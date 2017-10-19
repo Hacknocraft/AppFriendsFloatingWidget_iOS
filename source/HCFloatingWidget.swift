@@ -335,7 +335,7 @@ import AppFriendsCore
 
                     AFUser.checkIfUserIsBlocked(id, completion: { (blocked, error) in
 
-                        if let userBlocked = blocked, userBlocked == false {
+                        if error == nil && !blocked {
 
                             AFDialog.checkIfDialogIsMuted(dialogID, completion: { (muted, error) in
 
