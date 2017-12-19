@@ -22,15 +22,15 @@ import AppFriendsCore
 @objc public class HCFloatingWidget: UIViewController, AFEventSubscriber {
     
     /// the widget button
-    open let widgetButton: UIButton = UIButton(type: .custom)
+    @objc open let widgetButton: UIButton = UIButton(type: .custom)
     /// the screenshot button. it will be hidden by default
-    open let screenshotButton: UIButton = UIButton(type: .custom)
+    @objc open let screenshotButton: UIButton = UIButton(type: .custom)
     /// the message preview button
     open let messagePreviewBubble = HCPreviewBubble(frame: .zero)
     open let badge = UIView(frame: .zero)
     open var currentMessage: AFMessage?
     
-    open weak var delegate: HCFloatingWidgetDelegate?
+    @objc open weak var delegate: HCFloatingWidgetDelegate?
     
     // MARK: - Configurable images
     
@@ -39,13 +39,13 @@ import AppFriendsCore
     
     // MARK: - Configurable Colors
     
-    open static var widgetButtonBackgroundColor = UIColor(red: 75/255.0, green: 168/255.0, blue: 225/255.0, alpha: 1.0)
-    open static var widgetButtonIconColor = UIColor.white
-    open static var screenshotButtonBackgroundColor = UIColor(red: 228/255.0, green: 182/255.0, blue: 71/255.0, alpha: 1.0)
-    open static var previewBubbleBackgroundColor = UIColor(red: 75/255.0, green: 168/255.0, blue: 225/255.0, alpha: 1.0)
-    open static var previewBubbleTextColor = UIColor.white
-    open static var previewBubbleAvatarBackgroundColor = UIColor(red: 166/255.0, green: 180/255.0, blue: 191/255.0, alpha: 1.0)
-    open static var badgeColor = UIColor(red: 242/255.0, green: 67/255.0, blue: 61/255.0, alpha: 1.0)
+    @objc open static var widgetButtonBackgroundColor = UIColor(red: 75/255.0, green: 168/255.0, blue: 225/255.0, alpha: 1.0)
+    @objc open static var widgetButtonIconColor = UIColor.white
+    @objc open static var screenshotButtonBackgroundColor = UIColor(red: 228/255.0, green: 182/255.0, blue: 71/255.0, alpha: 1.0)
+    @objc open static var previewBubbleBackgroundColor = UIColor(red: 75/255.0, green: 168/255.0, blue: 225/255.0, alpha: 1.0)
+    @objc open static var previewBubbleTextColor = UIColor.white
+    @objc open static var previewBubbleAvatarBackgroundColor = UIColor(red: 166/255.0, green: 180/255.0, blue: 191/255.0, alpha: 1.0)
+    @objc open static var badgeColor = UIColor(red: 242/255.0, green: 67/255.0, blue: 61/255.0, alpha: 1.0)
     
     // MARK: - Other Configurables
     
@@ -194,7 +194,7 @@ import AppFriendsCore
     
     // MARK: - Presentation
     
-    open func present(overVC hostingVC: UIViewController, position: CGPoint) {
+    @objc open func present(overVC hostingVC: UIViewController, position: CGPoint) {
         
         assert(AFSession.isLoggedIn(), "Please login before presenting the widget.")
         

@@ -12,6 +12,7 @@ import AppFriendsUI
 
 @objc open class HCScreenshotController: RSKImageCropViewController, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, HCDialogsPickerViewControllerDelegate, UINavigationControllerDelegate {
 
+
     let closeButton = UIButton(type: .custom)
     let zoomButton = UIButton(type: .custom)
     let shareButton = UIButton(type: .custom)
@@ -136,39 +137,44 @@ import AppFriendsUI
         
         return UIBezierPath(rect: cropRect)
     }
-    
-    public func imageCropViewControllerCustomMaskRect(_ controller: RSKImageCropViewController) -> CGRect {
-        
-        return cropRect
-    }
-    
-    public func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect) {
-        
+
+    public func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
+
+
         self.croppedImage = croppedImage
-        
+
         if self.intent == .share {
-            
+
             let image = croppedImage
-            
+
             let activityItem: [AnyObject] = [image as AnyObject]
-            
+
             let avc = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
-            
+
             if UIDevice.current.userInterfaceIdiom == .pad {
                 avc.popoverPresentationController!.sourceView = self.view
                 avc.popoverPresentationController!.sourceRect = self.shareButton.frame
             }
-            
+
             self.present(avc, animated: true, completion: nil)
         }
         else if self.intent == .send {
-            
+
             let dialogsPicker = HCDialogsPickerViewController()
             dialogsPicker.title = "Pick a Conversation"
             dialogsPicker.delegate = self
             dialogsPicker.includeChannels = true
             self.navigationController?.pushViewController(dialogsPicker, animated: true)
         }
+    }
+
+    public func imageCropViewControllerCustomMovementRect(_ controller: RSKImageCropViewController) -> CGRect {
+        return cropRect
+    }
+
+    public func imageCropViewControllerCustomMaskRect(_ controller: RSKImageCropViewController) -> CGRect {
+        
+        return cropRect
     }
 
     // MARK: - HCDialogsPickerViewControllerDelegate
