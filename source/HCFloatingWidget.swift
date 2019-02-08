@@ -197,11 +197,11 @@ import AppFriendsCore
     @objc open func present(overVC hostingVC: UIViewController, position: CGPoint) {
         
         assert(AFSession.isLoggedIn(), "Please login before presenting the widget.")
-        
-        hostingVC.addChildViewController(self)
+
+        hostingVC.addChild(self)
         hostingVC.view.addSubview(self.view)
         self.view.center = position
-        self.didMove(toParentViewController: hostingVC)
+        self.didMove(toParent: hostingVC)
         
         _currentFrame = self.view.frame
         
